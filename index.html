@@ -1,24 +1,29 @@
-<html>
+<html lang="ru">
 
 <head>
-    
+    <meta charset="utf-8" />
 </head>
 
 <body>
     <div id="app">
-        <p>Current component: {{component_name}}</p>
-        <button v-on:click="choose_first()">Choose first</button>
-        <button v-on:click="choose_second()">Choose second</button>
+        <button v-on:click="choose_first()">Выбрать первый</button>
+        <button v-on:click="choose_second()">Выбрать второй</button>
         <component :is="component_name"></component>
     </div>
+    <hr/>
+    <p>
+        Вместо первого и второго компонента может быть произвольный контент. Но компоненты используются только в одном месте и в идеале должны использовать то же пространство имён, чтобы не приходилось писать <code>get_data().var1</code>.
+    </p>
 </body>
 
 <template id="first-component-template">
-    <p>This is the first component!</p>
+    <p>Это первый компонент!</p>
+    <p>Первая переменная: {{get_data().var1}}</p>
 </template>
 
 <template id="second-component-template">
-    <p>This is the second component!</p>
+    <p>Это второй компонент!</p>
+    <p>Вторая переменная: {{get_data().var2}}</p>
 </template>
 
 <script src="https://unpkg.com/vue@2.5.2/dist/vue.min.js"></script>
@@ -31,15 +36,20 @@
     Vue.component('second-component', {
         template: '#second-component-template'
     });
+    
+    const data = {
+        component_name: 'first-component',
+        var1: 'значение первой переменной',
+        var2: 'значение второй переменной'
+    };
 
     const app = new Vue({
         el: '#app',
-        data: {
-            component_name: 'first-component'
-        },
+        data: data,
         methods: {
-            choose_first () { this.component_name = 'first-component'; },
-            choose_second () { this.component_name = 'second-component'; }
+            choose_first: function () { this.component_name = 'first-component'; },
+            choose_second: function () { this.component_name = 'second-component'; },
+            get_data: function () { return data; }
         }
     });
 </script>
