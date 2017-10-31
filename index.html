@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <script src="https://unpkg.com/vue"></script>
+    
 </head>
 
 <body>
@@ -10,8 +10,6 @@
         <button v-on:click="choose_first">Choose first</button>
         <button v-on:click="choose_second">Choose second</button>
         <component :is="component_name"></component>
-        <first-component></first-component>
-        <second-component></second-component>
     </div>
 </body>
 
@@ -22,6 +20,8 @@
 <template id="second-component-template">
     <p>This is the second component!</p>
 </template>
+
+<script src="https://unpkg.com/vue"></script>
 
 <script>
     Vue.component('first-component', {
@@ -38,8 +38,8 @@
             component_name: 'first-component'
         },
         methods: {
-            choose_first: () => { this.component_name = 'first-component' },
-            choose_second: () => { this.component_name = 'second-component' }
+            choose_first: () => { alert('1'); this.component_name = 'first-component'; },
+            choose_second: () => { alert('2'); this.component_name = 'second-component'; }
         }
     });
 </script>
