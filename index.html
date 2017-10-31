@@ -6,10 +6,12 @@
 
 <body>
     <div id="app">
-        <p>{{component_name}}</p>
+        <p>Current component: {{component_name}}</p>
         <button v-on:click="choose_first">Choose first</button>
         <button v-on:click="choose_second">Choose second</button>
         <component :is="component_name"></component>
+        <first-component></first-component>
+        <second-component></second-component>
     </div>
 </body>
 
