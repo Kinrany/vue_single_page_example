@@ -42,27 +42,32 @@
 <script src="https://unpkg.com/vue@2.5.2/dist/vue.min.js"></script>
 
 <script>
-    Vue.component('first-component', {
-        template: '#first-component-template'
-    });
-    
-    Vue.component('second-component', {
-        template: '#second-component-template'
-    });
-    
     const data = {
         component_name: 'first-component',
         var1: 'значение первой переменной',
         var2: 'значение второй переменной'
     };
+    
+    Vue.component('first-component', {
+        template: '#first-component-template',
+        methods: {
+            get_data: () => data   
+        }
+    });
+    
+    Vue.component('second-component', {
+        template: '#second-component-template',
+        methods: {
+            get_data: () => data   
+        }
+    });
 
     const app = new Vue({
         el: '#app',
         data: data,
         methods: {
             choose_first: function () { this.component_name = 'first-component'; },
-            choose_second: function () { this.component_name = 'second-component'; },
-            get_data: function () { return data; }
+            choose_second: function () { this.component_name = 'second-component'; }
         }
     });
 </script>
