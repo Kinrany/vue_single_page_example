@@ -7,8 +7,8 @@
 <body>
     <div id="app">
         <p>Current component: {{component_name}}</p>
-        <button v-on:click="choose_first">Choose first</button>
-        <button v-on:click="choose_second">Choose second</button>
+        <button v-on:click="choose_first()">Choose first</button>
+        <button v-on:click="choose_second()">Choose second</button>
         <component :is="component_name"></component>
     </div>
 </body>
