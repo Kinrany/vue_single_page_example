@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{component_name}}</p>
+        <button v-on:click="choose_first">Choose first</button>
+        <button v-on:click="choose_second">Choose second</button>
+        <component :is="component_name"></component>
+    </div>
+</body>
+
+<template id="first-component-template">
+    <p>This is the first component!</p>
+</template>
+
+<template id="second-component-template">
+    <p>This is the second component!</p>
+</template>
+
+<script>
+    Vue.component('first-component', {
+        template: '#first-component-template'
+    });
+    
+    Vue.component('second-component', {
+        template: '#second-component-template'
+    });
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            component_name: 'first-component'
+        },
+        methods: {
+            choose_first: () => { this.component_name = 'first-component' },
+            choose_second: () => { this.component_name = 'second-component' }
+        }
+    });
+</script>
+
+</html>
