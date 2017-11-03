@@ -1,5 +1,5 @@
 <html lang="ru">
-    
+
 <head>
     <meta charset="utf-8" />
 </head>
@@ -13,13 +13,13 @@
         <button v-on:click="wrapping_on = !wrapping_on">
             {{wrapping_on ? 'wrapping' : 'not wrapping'}}
         </button>
-        <conditional-wrap :cond="wrapping_on" :wrap="'my-bold'">
+        <conditional-wrapper :cond="wrapping_on" :wrap="'my-bold'">
             <p>Привет, мир!</p>
-        </conditional-wrap>
+        </conditional-wrapper>
     </div>
 </body>
 
-<template id="conditional-wrap-template">
+<template id="conditional-wrapper-template">
     <div>
         <component :is="wrap" v-if="cond">
             <slot></slot>
@@ -41,14 +41,14 @@
         template: '#conditional-wrapper-template',
         props: ['cond', 'wrap']
     });
-    
+
     Vue.component('my-bold', {
         template: '#my-bold-template'
     });
 
     const app = new Vue({
         el: '#app',
-        data: {wrapping_on: true}
+        data: { wrapping_on: true }
     });
 </script>
 
