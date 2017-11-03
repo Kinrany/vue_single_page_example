@@ -13,7 +13,7 @@
         <button v-on:click="wrapping_on = !wrapping_on">
             {{wrapping_on ? 'bold' : 'not bold'}}
         </button>
-        <vc-conditional-wrap :cond="foo" :wrap="'my-bold'">
+        <vc-conditional-wrap :cond="wrapping_on" :wrap="'my-bold'">
             <p>Привет, мир!</p>
         </vc-conditional-wrap>
     </div>
