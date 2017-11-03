@@ -1,1 +1,1 @@
-https://kinrany.github.io/vue_single_page_example/
+https://kinrany.github.io/vue_single_page_examples/
