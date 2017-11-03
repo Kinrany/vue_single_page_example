@@ -13,7 +13,7 @@
         <button v-on:click="wrapping_on = !wrapping_on">
             {{wrapping_on ? 'wrapping' : 'not wrapping'}}
         </button>
-        <conditional-wrapper :cond="wrapping_on" :wrap="'my-bold'">
+        <conditional-wrapper :condition="wrapping_on" :wrapper="'my-bold'">
             <p>Привет, мир!</p>
         </conditional-wrapper>
     </div>
@@ -21,7 +21,7 @@
 
 <template id="conditional-wrapper-template">
     <div>
-        <component :is="wrap" v-if="cond">
+        <component :is="wrapper" v-if="condition">
             <slot></slot>
         </component>
         <slot v-else></slot>
@@ -39,7 +39,7 @@
 <script>
     Vue.component('conditional-wrapper', {
         template: '#conditional-wrapper-template',
-        props: ['cond', 'wrap']
+        props: ['condition', 'wrapper']
     });
 
     Vue.component('my-bold', {
