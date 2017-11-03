@@ -11,7 +11,7 @@
     <hr/>
     <div id="app">
         <button v-on:click="wrapping_on = !wrapping_on">
-            {{wrapping_on ? 'bold' : 'not bold'}}
+            {{wrapping_on ? 'wrapping' : 'not wrapping'}}
         </button>
         <vc-conditional-wrap :cond="wrapping_on" :wrap="'my-bold'">
             <p>Привет, мир!</p>
