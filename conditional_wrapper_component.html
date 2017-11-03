@@ -6,8 +6,8 @@
     </a>
     <hr/>
     <div id="app">
-        <button v-on:click="foo = !foo">
-            {{foo ? 'bold' : 'not bold'}}
+        <button v-on:click="wrapping_on = !wrapping_on">
+            {{wrapping_on ? 'bold' : 'not bold'}}
         </button>
         <vc-conditional-wrap :cond="foo" :wrap="'my-bold'">
             <p>Привет, мир!</p>
@@ -44,7 +44,7 @@
 
     const app = new Vue({
         el: '#app',
-        data: {foo: true}
+        data: {wrapping_on: true}
     });
 </script>
 
